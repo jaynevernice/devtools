@@ -1,0 +1,26 @@
+/* CUSTOM CSS */
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+
+.pStyle {
+    font-family: 'Salsa', cursive;
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to right, #c2e59c, #64b3f4);
+}
+
+.overlay {
+    width: 0;
+    height: 0;
+    border-top: 500px solid #fff;
+    border-right: 500px solid transparent;
+    border-bottom: 500px solid #fff;
+    border-left: 500px solid #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
