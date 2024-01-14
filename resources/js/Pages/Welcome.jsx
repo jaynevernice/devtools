@@ -25,7 +25,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
       {showPreloader ? (
         <Preloader />
       ) : (
-        <Home auth={auth} laravelVersion={laravelVersion} phpVersion={phpVersion} />
+        // <Home auth={auth} laravelVersion={laravelVersion} phpVersion={phpVersion} />
+        <Home />
       )}
     </>
   );
