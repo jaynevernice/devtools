@@ -1,6 +1,6 @@
 import React, { useEffect, useState }  from 'react'
 import '../../css/style.css'
-import {FaArrowDown, FaArrowUp, FaBatteryFull, FaCalendar, FaCamera, FaFont, FaPhone} from "react-icons/fa"
+import {FaArrowDown, FaArrowUp, FaFont, FaSwatchbook, FaBook} from "react-icons/fa"
 import { IconContext } from 'react-icons'
 
 function Home() {
@@ -25,7 +25,23 @@ function Home() {
   //     downBtn.onclick = null;
   //   };
   // }, []);
-  
+
+  const [categoryIndex, setCategoryIndex] = useState(0);
+  // const categories = ['Typography', 'Color', 'Icons', 'Documentation'];
+  const categories = [
+    {name: 'Typography', icon: <FaFont/>},
+    {name: 'Color', icon: <FaSwatchbook/>},
+    {name: 'Documentations', icon: <FaBook/>},
+  ]
+
+  const handleUpClick = () => {
+    setCategoryIndex(prevIndex => (prevIndex === 0 ? categories.length - 1 : prevIndex - 1));
+  };
+
+  const handleDownClick = () => {
+    setCategoryIndex(prevIndex => (prevIndex === categories.length - 1 ? 0 : prevIndex + 1));
+  };
+
   return (
 
     <div className='main'>
@@ -35,16 +51,17 @@ function Home() {
         <div className='overlay'></div>
 
           <div className="controls">
-            <div id='upBtn'>
+            <div id='upBtn' onClick={handleUpClick}>
               <FaArrowUp />
             </div>
             <div className="icon-wrapper">
               <IconContext.Provider value={{ size: '8em' }}>
-                <FaFont />
+                {/* <FaFont /> */}
+                {categories[categoryIndex].icon}
               </IconContext.Provider>
-              Typography
+              {categories[categoryIndex].name}
             </div>
-            <div id='downBtn'>
+            <div id='downBtn' onClick={handleDownClick}>
               <FaArrowDown />
             </div>
           </div>
