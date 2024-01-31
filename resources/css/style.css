@@ -74,14 +74,14 @@
     background: linear-gradient(to right, #c2e59c, #64b3f4);
 }
 
-.category {
+/* .category {
     width: 200px;
     position: absolute;
     top: 50%;
     left: 35%;
     transform: translateY(-50%);
     z-index: 1;
-}
+} */
 
 /* Start of Controls Style  */
 .controls {
