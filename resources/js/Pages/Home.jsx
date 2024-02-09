@@ -2,7 +2,7 @@ import React, { useEffect, useState }  from 'react'
 import '../../css/style.css'
 import {FaArrowDown, FaArrowUp, FaFont, FaSwatchbook, FaBook} from "react-icons/fa"
 import { IconContext } from 'react-icons'
-import { typography } from '@/Data'
+import { cards } from '@/Data'
 
 function Home() {
   // const [rotateValue, setRotateValue] = useState("rotate(0deg)");
@@ -43,6 +43,8 @@ function Home() {
     setCategoryIndex(prevIndex => (prevIndex === categories.length - 1 ? 0 : prevIndex + 1));
   };
 
+  const filteredCards = cards.filter(({category}) => category === categories[categoryIndex].name);
+
   return (
 
     <div className='main'>
@@ -70,12 +72,13 @@ function Home() {
           {/* <div className="circle"> */}
 
           <div className='absolute top-1/2 left-full transform -translate-x-1/2 -translate-y-1/2'>
-            <div className='flex flex-row space-x-4'>
-              {typography.map(({name, site, logo, description}, index) => {
+            <div className='grid grid-cols-2 gap-x-[21rem] gap-y-2'>
+              {filteredCards.map(({name, site, logo, description}, index) => {
+                // console.log({name, site, logo, description});
                 return(
                   <div key={index}>
                     <a href={site} target='_blank'>
-                      <div className="text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-96 h-40">
+                      <div className="text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-80 h-40">
                         <div className="p-6">
                           <img src={logo} alt="" className='h-10' />
                           <h5 className="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
