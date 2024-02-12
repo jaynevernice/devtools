@@ -1,6 +1,6 @@
 import React, { useEffect, useState }  from 'react'
 import '../../css/style.css'
-import {FaArrowDown, FaArrowUp, FaFont, FaSwatchbook, FaBook} from "react-icons/fa"
+import {FaArrowDown, FaArrowUp, FaFont, FaSwatchbook, FaBook, FaPencilAlt} from "react-icons/fa"
 import { IconContext } from 'react-icons'
 import { cards } from '@/Data'
 
@@ -8,7 +8,8 @@ import {Swiper, SwiperSlide} from 'swiper/react'
 import 'swiper/css'
 
 import 'swiper/css/grid'
-import {Grid} from 'swiper/modules'
+import 'swiper/css/pagination'
+import {Grid, Pagination} from 'swiper/modules'
 
 function Home() {
 
@@ -18,6 +19,7 @@ function Home() {
     {name: 'Typography', icon: <FaFont/>},
     {name: 'Color', icon: <FaSwatchbook/>},
     {name: 'Documentations', icon: <FaBook/>},
+    {name: 'Prototype', icon: <FaPencilAlt/>},
   ]
 
   const handleUpClick = () => {
@@ -29,6 +31,23 @@ function Home() {
   };
 
   const filteredCards = cards.filter(({category}) => category === categories[categoryIndex].name);
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowUp') {
+        handleUpClick();
+      } else if (event.key === 'ArrowDown') {
+        handleDownClick();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return() => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+
+  }, [categoryIndex]); 
 
   return (
 
@@ -59,7 +78,9 @@ function Home() {
             slidesPerView={3}
             grid = {{ 
               rows: 2,
+              fill: 'row',
             }}
+            modules={[Grid, Pagination]}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
           >
