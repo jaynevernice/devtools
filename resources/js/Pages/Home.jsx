@@ -7,6 +7,9 @@ import { cards } from '@/Data'
 import {Swiper, SwiperSlide} from 'swiper/react'
 import 'swiper/css'
 
+import 'swiper/css/grid'
+import {Grid} from 'swiper/modules'
+
 function Home() {
 
   const [categoryIndex, setCategoryIndex] = useState(0);
@@ -41,7 +44,6 @@ function Home() {
             </div>
             <div className="icon-wrapper">
               <IconContext.Provider value={{ size: '8em' }}>
-                {/* <FaFont /> */}
                 {categories[categoryIndex].icon}
               </IconContext.Provider>
               {categories[categoryIndex].name}
@@ -52,9 +54,12 @@ function Home() {
           </div>
 
 
-          <Swiper className='absolute top-1/2 left-full transform -translate-x-1/2 -translate-y-1/2'
-            spaceBetween={10}
+          <Swiper className='absolute top-1/2 left-full transform -translate-x-1/3 -translate-y-1/2'
+            // spaceBetween={10}
             slidesPerView={3}
+            grid = {{ 
+              rows: 2,
+            }}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
           >
@@ -64,7 +69,7 @@ function Home() {
               // {filteredCards.slice(0, 8).map(({name, site, logo, description}, index) => {
                 // console.log({name, site, logo, description});
                 return(
-                  <SwiperSlide key={index} >
+                  <SwiperSlide key={index} className='mb-2'>
                     {/* div key={index} */}
                     <a href={site} target='_blank'>
                       <div className="text-gray-700 bg-white shadow-md bg-clip-border rounded-xl w-80 h-40">
