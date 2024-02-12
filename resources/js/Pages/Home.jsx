@@ -1,6 +1,6 @@
 import React, { useEffect, useState }  from 'react'
 import '../../css/style.css'
-import {FaArrowDown, FaArrowUp, FaFont, FaSwatchbook, FaBook, FaPencilAlt} from "react-icons/fa"
+import {FaArrowDown, FaArrowUp, FaFont, FaSwatchbook, FaBook, FaPencilAlt, FaProjectDiagram, FaBoxOpen} from "react-icons/fa"
 import { IconContext } from 'react-icons'
 import { cards } from '@/Data'
 
@@ -20,6 +20,8 @@ function Home() {
     {name: 'Color', icon: <FaSwatchbook/>},
     {name: 'Documentations', icon: <FaBook/>},
     {name: 'Prototype', icon: <FaPencilAlt/>},
+    {name: 'Diagram', icon: <FaProjectDiagram/>},
+    {name: 'Design Resources', icon: <FaBoxOpen/>},
   ]
 
   const handleUpClick = () => {
